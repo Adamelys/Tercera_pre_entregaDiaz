@@ -4,7 +4,13 @@ from AppEntrega.models import Curso
 
 
 # Create your views here.
-def guardar_curso(request, camada):
-    curso = Curso(nombre="Python", camada=camada)
-    curso.save()
-    return HttpResponse("Valor Almacenado Exitosamente")
+def cursos(request):
+    return render(request, "index.html")
+
+
+def estudiantes(request):
+    return render(request, "index.html")
+
+
+def profesores(request):
+    return render(request, "index.html")
