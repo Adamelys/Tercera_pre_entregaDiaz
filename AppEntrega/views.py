@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from AppEntrega.models import Curso
 from AppEntrega.forms import CursoForm, BusquedaCursoForm
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
-
+@login_required()
 def busqueda_curso(request):
     #mostrar datos filtrados
     mi_formulario = BusquedaCursoForm(request.GET)
@@ -49,7 +50,7 @@ def crear_curso(request):
         if mi_formulario.is_valid():
             informacion = mi_formulario.cleaned_data
             curso_save = Curso(
-                nombre=informacion['nombre']
+                nombre=informacion['nombre'],
                 camada=informacion['camada']
                 )
             curso_save.save()

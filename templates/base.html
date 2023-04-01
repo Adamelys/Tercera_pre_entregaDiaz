@@ -23,9 +23,20 @@
                 <a class="navbar-brand" href="{% url 'AppCoderCursos' %}">Cursos</a>
                 <a class="navbar-brand" href="{% url 'AppCoderEstudiantes' %}">Estudiantes</a>
                 <a class="navbar-brand" href="{% url 'AppCoderProfesores' %}">Profesores</a>
-                <a class="btn btn-primary" href="#signup">Sign Up</a>
+
+                {% if user.is_authenticated %}
+                    <a class="btn btn-primary" href="{% url 'accountlogout' %}">LogOut</a>
+                    <a class="navbar-brand">{{ user.username }}</a>
+                {% else %}
+                    <a class="btn btn-primary" href="{% url 'accountregister' %}">Registrar</a>
+                    <a class="btn btn-primary" href="{% url 'accountlogin' %}">LogIn</a>
+                {% endif %}
             </div>
         </nav>
+        <!-- Mensajes -->
+        {% for mensaje in mensajes %}
+            <p>{{ mensaje }}</p>
+        {% endfor %}
         <!-- Body -->
         {% block contenido_cambia %}
             <h1>No se encuentra contenido disponible</h1>
