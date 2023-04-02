@@ -7,4 +7,4 @@ class UserRegisterForm(UserCreationForm):
     if_staff = forms.BooleanField()
     class Meta:
         model = User
-        fields = ("username", "email", "if_staff")
+        fields = ("username", "email", "is_staff")

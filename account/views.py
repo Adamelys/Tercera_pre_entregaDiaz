@@ -5,6 +5,36 @@ from account.forms import UserRegisterForm
 
 # Create your views here.
 
+def editar_usuario(request):
+    user = request.user
+
+    if request.method == "POST":
+       form = UserRegisterForm(request.POST)
+
+       if form.is_valid():
+
+           informacion = form.cleaned_data
+           user.username=informacion["username"]
+           user.email = informacion["email"]
+           user.is_staff = informacion["is_staff"]
+
+           user.save()
+           return redirect("accountlogin")
+
+
+    form = UserRegisterForm(initial={
+        "username": user.username,
+        "email": user.email,
+        "is_staff": user.is_staff
+    })
+
+    context = {
+        "form": form,
+        "titulo": "Editar Usuario",
+        "enviar": "Editar"
+    }
+    return render(request, "account/form.html", context=context)
+
 def register_account(request):
     if request.method == "POST":
        # form = UserCreationForm(request.POST)
@@ -16,9 +46,11 @@ def register_account(request):
     # form = UserCreationForm()
     form = UserRegisterForm()
     context = {
-        "form": form
+        "form": form,
+        "titulo": "Registrar Usuario",
+        "enviar": "Registrar"
     }
-    return render(request, "account/login.html", context=context)
+    return render(request, "account/form.html", context=context)
 
 def login_account(request):
 
@@ -30,12 +62,14 @@ def login_account(request):
             user = authenticate(username=informacion['username'],password=informacion['password'])
             if user:
                 login(request,user)
-                return render(request,"account/login.html",context={"mensajes": ["Sesion Iniciada"]})
+                return render(request,"account/form.html",context={"mensajes": ["Sesion Iniciada"]})
             else:
-                return render(request,"account/login.html",context={"mensajes": ["Error en Inicio de Sesion"]})
+                return render(request,"account/form.html",context={"mensajes": ["Error en Inicio de Sesion"]})
     form = AuthenticationForm()
     context = {
-        "form": form
+        "form": form,
+        "titulo": "Login",
+        "enviar": "Iniciar"
     }
-    return render(request, "account/login.html",context=context)
+    return render(request, "account/form.html",context=context)
 
