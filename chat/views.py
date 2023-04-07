@@ -21,9 +21,22 @@ def chatusers(request):
                 conversacion = informacion['conversacion']
             )
             mi_formulario.save()
-            return render(request,"AppEntrega/chat.html")
+            return redirect("account/form.html")
 
     context = {
         "form": ChatForm()
     }
+    return render(request,"AppEntrega/chat.html",context=context)
+
+def consulta_chat(request):
+    #mostrar datos filtrados
+    mi_formulario = consulta_chat(request.GET)
+    if mi_formulario.is_valid():
+        informacion = mi_formulario.cleaned_data
+        consulta_chat = Chat.objects.all()
+
+        context = {
+            "cursos": consulta_chat
+        }
+
     return render(request,"AppEntrega/chat.html",context=context)

@@ -5,6 +5,18 @@
     <form method="POST" action="{% url 'chatusers' %}" >
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Chat">
+        <input type="submit" value="Crear Chat">
     </form>
+    <hr><br>
+    {# Ver Chats #}
+    <br><hr>
+      {% if chat %}
+          {% for chat in chats %}
+              <p>Fecha: {{ chat.fecha_hora }} Conversacion: {{ curso.conversacion }}
+              </p>
+              <hr>
+          {% endfor %}
+      {% else %}
+        <h5> No hay Chats </h5>
+      {% endif %}
 {% endblock %}
