@@ -23,7 +23,8 @@
                 <a class="navbar-brand" href="{% url 'AppCoderCursos' %}">Cursos</a>
                 <a class="navbar-brand" href="{% url 'AppCoderEstudiantes' %}">Estudiantes</a>
                 <a class="navbar-brand" href="{% url 'AppCoderProfesores' %}">Profesores</a>
-
+                <a class="navbar-brand" href="{% url 'chatusers' %}">Chat</a>
+                <a class="navbar-brand" href="{% url 'blog' %}">Blog</a>
                 {% if user.is_authenticated %}
                     <img src="{{ user.avatar.imagen.url }}" alt = "Usuario" height="30 px">
                     <a class="btn btn-primary" href="{% url 'accountlogout' %}">LogOut</a>

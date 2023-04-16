@@ -4,4 +4,5 @@ from django.contrib import admin
 
 urlpatterns = [
     path('chat/', chatusers, name="chatusers"),
+    path('blog/', blog, name="blog"),
 ]

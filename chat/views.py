@@ -40,3 +40,6 @@ def consulta_chat(request):
         }
 
     return render(request,"AppEntrega/chat.html",context=context)
+
+def blog(request):
+    return render(request, "base.html")
