@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block contenido_cambia %}
+    {# Blog #}
+    <form action="{% url 'blog' %}" >
+        {% csrf_token %}
+        {{ form.as_p }}
+    </form>
+{% endblock %}
