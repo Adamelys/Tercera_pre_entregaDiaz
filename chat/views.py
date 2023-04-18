@@ -1,7 +1,5 @@
 from django.shortcuts import render, redirect
-from chat.forms import ChatForm
-from AppEntrega.forms import CursoForm, BusquedaCursoForm
-from AppEntrega.models import Curso
+from chat.forms import ChatForm, buscar_chat
 from chat.models import Chat
 
 # Create your views here.
@@ -30,16 +28,17 @@ def chatusers(request):
 
 def consulta_chat(request):
     #mostrar datos filtrados
-    mi_formulario = consulta_chat(request.GET)
+    mi_formulario = buscar_chat(request.GET)
     if mi_formulario.is_valid():
         informacion = mi_formulario.cleaned_data
         consulta_chat = Chat.objects.all()
 
         context = {
-            "cursos": consulta_chat
+            "chat": consulta_chat
         }
 
     return render(request,"AppEntrega/chat.html",context=context)
 
 def blog(request):
-    return render(request, "AppEntrega/blog.html")
+
+    return render(request,"AppEntrega/blog.html")
