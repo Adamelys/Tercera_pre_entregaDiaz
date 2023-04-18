@@ -7,4 +7,11 @@
         {{ "La mejor forma de conocer un país es por medio de su gastronomía, por eso en esta ocasión haremos un recorrido por los platos típicos de Argentina. Vamos a conocer más de este país a través de su forma de cocinar, ingredientes y toda la tradición que hay en sus preparaciones, que no solo son populares dentro de su territorio, sino que muchas preparaciones trascienden las fronteras siendo famosas en Latinoamérica y otros países del mundo.
 Argentina es un país que tiene una rica tradición gastronómica gracias a la mezcla de distintas culturas y recetas de los pueblos nativos con ingredientes que se introdujeron durante la época de la colonia con los españoles: al igual que los aportes de la gastronomía de europea de Alemania, Francia y Reino Unido, sin olvidar la fuerte influencia de los inmigrantes italianos. La incorporación de estas culturas y recetas, fueron adaptadas en distintas regiones dando origen a una gran variedad de platos típicos argentinos.  " }}
     </form>
+     {% if chat %}
+        {% for chat in chats %}
+            <p>chat:  {{chat}} </p>
+        {% endfor %}
+    {% else %}
+        <h3>No Hay Comentarios de este artículo</h3>
+    {% endif %}
 {% endblock %}

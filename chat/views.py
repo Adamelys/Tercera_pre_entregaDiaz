@@ -37,7 +37,7 @@ def consulta_chat(request):
             "chat": consulta_chat
         }
 
-    return render(request,"AppEntrega/chat.html",context=context)
+    return render(request,"AppEntrega/blog.html",context=context)
 
 def blog(request):
 
