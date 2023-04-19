@@ -10,10 +10,9 @@
     <hr><br>
     {# Ver Chats #}
     <br><hr>
-      {% if chat %}
-          {% for chat in chats %}
-              <p>Fecha: {{ chat.fecha_hora }} Conversacion: {{ curso.conversacion }}
-              </p>
+      {% if Chat %}
+          {% for Chat in chats %}
+              <p>Fecha: {{ Chat.fecha_hora }} Conversacion: {{ Chat.conversacion }}</p>
               <hr>
           {% endfor %}
       {% else %}

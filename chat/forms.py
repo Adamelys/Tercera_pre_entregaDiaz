@@ -12,8 +12,11 @@ class ChatForm(forms.ModelForm):
         model = Chat
         fields = ("usuario", "fecha_hora", "id_mensaje", "conversacion")
 
-class buscar_chat(forms.Form):
-    usuario = forms.CharField(min_length=1, max_length=30)
-    fecha_hora = forms.DateField()
-    id_mensaje = forms.IntegerField()
-    conversacion = forms.CharField(min_length=1, max_length=250)
+class buscar_chat(forms.ModelForm):
+    # usuario = forms.CharField(min_length=1, max_length=30)
+    # fecha_hora = forms.DateField()
+    # id_mensaje = forms.IntegerField()
+    # conversacion = forms.CharField(min_length=1, max_length=250)
+    class Meta:
+        model = Chat
+        fields = "__all__"

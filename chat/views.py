@@ -27,16 +27,10 @@ def chatusers(request):
     return render(request,"AppEntrega/chat.html",context=context)
 
 def consulta_chat(request):
-    #mostrar datos filtrados
-    mi_formulario = buscar_chat(request.GET)
-    if mi_formulario.is_valid():
-        informacion = mi_formulario.cleaned_data
-        consulta_chat = Chat.objects.all()
-
-        context = {
-            "chat": consulta_chat
-        }
-
+    consulta_chat = Chat.objects.all()
+    context = {
+        "form": consulta_chat
+    }
     return render(request,"AppEntrega/blog.html",context=context)
 
 def blog(request):
